@@ -21,6 +21,7 @@ namespace ColourCircles
         private bool run = true;
         private Random _random = new Random();
 
+
         public CircleDrawer(CircleTemlate circleTemplate, int pauseInt, Graphics g) {
             this.circleTemplate = circleTemplate;
             this.g = g;
@@ -60,6 +61,11 @@ namespace ColourCircles
         {
             thread.Join();
 
+        }
+
+        public void SetPriority(ThreadPriority priority)
+        {
+            thread.Priority = priority;
         }
     }
 }

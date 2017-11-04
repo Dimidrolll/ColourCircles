@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ColourCircles
@@ -14,7 +16,12 @@ namespace ColourCircles
 
             listOfThreads.DataSource = drawers;
             listOfThreads.DisplayMember = "Name";
-
+            comboBox1.Items.Add(ThreadPriority.Lowest);
+            comboBox1.Items.Add(ThreadPriority.BelowNormal);
+            comboBox1.Items.Add(ThreadPriority.Normal);
+            comboBox1.Items.Add(ThreadPriority.AboveNormal);
+            comboBox1.Items.Add(ThreadPriority.Highest);
+            comboBox1.SelectedItem = ThreadPriority.Normal;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -74,6 +81,17 @@ namespace ColourCircles
             {
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
                 drawer.Resume();
+            }
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var selectedDrawer = listOfThreads.SelectedItem;
+            if (selectedDrawer != null)
+            {
+                CircleDrawer drawer = selectedDrawer as CircleDrawer;
+                ThreadPriority priority = (ThreadPriority) comboBox1.SelectedItem;
+                drawer.SetPriority(priority);
             }
         }
     }
