@@ -1,0 +1,9 @@
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\bin\Debug\ColourCircles.exe.config
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\bin\Debug\ColourCircles.exe
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\bin\Debug\ColourCircles.pdb
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.csprojResolveAssemblyReference.cache
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.Form1.resources
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.Properties.Resources.resources
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.csproj.GenerateResource.Cache
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.exe
+c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.pdb
