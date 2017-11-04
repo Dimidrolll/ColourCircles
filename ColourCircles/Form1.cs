@@ -34,7 +34,14 @@ namespace ColourCircles
 
         private void removeThread_Click(object sender, EventArgs e)
         {
-
+            var selectedDrawer = listOfThreads.SelectedItem;
+            if (selectedDrawer != null)
+            {
+                CircleDrawer drawer = selectedDrawer as CircleDrawer;
+                drawer.End();
+                drawer.waitEnd();
+                drawers.Remove(drawer);
+            }
         }
 
         private void colorButton_Click(object sender, EventArgs e)
@@ -53,11 +60,21 @@ namespace ColourCircles
         }
         private void suspendButton_Click(object sender, EventArgs e)
         {
-
+            var selectedDrawer = listOfThreads.SelectedItem;
+            if (selectedDrawer != null)
+            {
+                CircleDrawer drawer = selectedDrawer as CircleDrawer;
+                drawer.Stop();
+            }
         }
         private void resumeButton_Click(object sender, EventArgs e)
         {
-
+            var selectedDrawer = listOfThreads.SelectedItem;
+            if (selectedDrawer != null)
+            {
+                CircleDrawer drawer = selectedDrawer as CircleDrawer;
+                drawer.Resume();
+            }
         }
     }
 }
