@@ -10,7 +10,7 @@ namespace ColourCircles
     class CircleTemlate
     {
         public Color color { get; }
-        public int radius;
+        public int radius { get; }
 
         public CircleTemlate(Color color, int radius) {
             this.color = color;

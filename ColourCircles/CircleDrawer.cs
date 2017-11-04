@@ -11,7 +11,6 @@ namespace ColourCircles
     class CircleDrawer
     {
         private CircleTemlate circleTemplate;
-        private int pauseInt;
 
         public string Name => circleTemplate.color.ToString();
 
@@ -20,28 +19,25 @@ namespace ColourCircles
         private Thread thread;
         private Graphics g;
         private bool run = true;
+        private Random _random = new Random();
 
         public CircleDrawer(CircleTemlate circleTemplate, int pauseInt, Graphics g) {
             this.circleTemplate = circleTemplate;
-            this.pauseInt = pauseInt;
             this.g = g;
-            Brush brush = circleTemplate.GetBrush(); 
-            Random rand = new Random();
+            Brush brush = circleTemplate.GetBrush();
             _event = new ManualResetEvent(true);
             thread = new Thread(()=> {
-                
-
                 while (run)
                 {
-                    DrawRandCircle(brush, rand, circleTemplate.radius);
+                    DrawRandCircle(brush, circleTemplate.radius);
                     Thread.Sleep(pauseInt);
                     _event.WaitOne();
                 }
 
             });
         }
-        public void DrawRandCircle(Brush p, Random rand, int radius) {
-            g.FillEllipse(p, rand.Next(130, 760), rand.Next(10, 515), radius, radius);
+        public void DrawRandCircle(Brush p, int radius) {
+            g.FillEllipse(p, _random.Next(130, 760), _random.Next(10, 515), radius, radius);
         }
         public void Start()
         {

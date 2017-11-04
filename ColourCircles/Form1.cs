@@ -45,8 +45,11 @@ namespace ColourCircles
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-
+            foreach (var drawer in drawers)
+            {
+                drawer.End();
+                drawer.waitEnd();
+            }
         }
         private void suspendButton_Click(object sender, EventArgs e)
         {
