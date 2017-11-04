@@ -7,3 +7,12 @@ c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\
 c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.csproj.GenerateResource.Cache
 c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.exe
 c:\users\acer\documents\visual studio 2015\Projects\ColourCircles\ColourCircles\obj\Debug\ColourCircles.pdb
+D:\src\2 course\C#\ColourCircle\ColourCircles\bin\Debug\ColourCircles.exe.config
+D:\src\2 course\C#\ColourCircle\ColourCircles\obj\Debug\ColourCircles.exe
+D:\src\2 course\C#\ColourCircle\ColourCircles\obj\Debug\ColourCircles.pdb
+D:\src\2 course\C#\ColourCircle\ColourCircles\bin\Debug\ColourCircles.exe
+D:\src\2 course\C#\ColourCircle\ColourCircles\bin\Debug\ColourCircles.pdb
+D:\src\2 course\C#\ColourCircle\ColourCircles\obj\Debug\ColourCircles.csprojResolveAssemblyReference.cache
+D:\src\2 course\C#\ColourCircle\ColourCircles\obj\Debug\ColourCircles.Form1.resources
+D:\src\2 course\C#\ColourCircle\ColourCircles\obj\Debug\ColourCircles.Properties.Resources.resources
+D:\src\2 course\C#\ColourCircle\ColourCircles\obj\Debug\ColourCircles.csproj.GenerateResource.Cache
