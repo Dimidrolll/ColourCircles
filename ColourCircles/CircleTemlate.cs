@@ -9,7 +9,7 @@ namespace ColourCircles
 {
     class CircleTemlate
     {
-        public Color color;
+        public Color color { get; }
         public int radius;
 
         public CircleTemlate(Color color, int radius) {

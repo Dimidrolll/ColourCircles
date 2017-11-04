@@ -13,9 +13,11 @@ namespace ColourCircles
         private CircleTemlate circleTemplate;
         private int pauseInt;
 
+        public string Name => circleTemplate.color.ToString();
+
 
         private ManualResetEvent _event;
-        public Thread thread;
+        private Thread thread;
         private Graphics g;
         private bool run = true;
 

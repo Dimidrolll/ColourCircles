@@ -1,21 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
+
 namespace ColourCircles
 {
     public partial class Form1 : Form
     {
-        const int max_count = 100;
+        BindingList<CircleDrawer> drawers = new BindingList<CircleDrawer>();
+         
         public Form1()
         {
             InitializeComponent();
+
+            listOfThreads.DataSource = drawers;
+            listOfThreads.DisplayMember = "Name";
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,8 +25,10 @@ namespace ColourCircles
 
         private void addThread_Click(object sender, EventArgs e)
         {
-      
-  
+            CircleTemlate circleTemlate = new CircleTemlate(colorDialog1.Color, (int) nudRadius.Value);
+            CircleDrawer circleDrawer = new CircleDrawer(circleTemlate, (int) nudRefreshInt.Value, CreateGraphics());
+            drawers.Add(circleDrawer);
+            circleDrawer.Start();
         }
 
 
