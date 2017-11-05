@@ -20,8 +20,7 @@ namespace ColourCircles
         private Graphics g;
         private bool run = true;
         private Random _random = new Random();
-
-
+        
         public CircleDrawer(CircleTemlate circleTemplate, int pauseInt, Graphics g) {
             this.circleTemplate = circleTemplate;
             this.g = g;
@@ -37,8 +36,14 @@ namespace ColourCircles
 
             });
         }
-        public void DrawRandCircle(Brush p, int radius) {
-            g.FillEllipse(p, _random.Next(130, 760), _random.Next(10, 515), radius, radius);
+
+        public void DrawRandCircle(Brush p, int radius)
+        {
+
+            for (int i = 0; i < 50; i++)
+            {
+                g.FillEllipse(p, _random.Next(130, 800), _random.Next(0, 530), radius, radius);
+            }
         }
         public void Start()
         {
@@ -60,12 +65,17 @@ namespace ColourCircles
         public void waitEnd()
         {
             thread.Join();
-
+            
         }
 
         public void SetPriority(ThreadPriority priority)
         {
             thread.Priority = priority;
+        }
+
+        public ThreadPriority GetPriorty()
+        {
+            return thread.Priority; 
         }
     }
 }

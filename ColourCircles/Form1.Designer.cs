@@ -46,12 +46,15 @@
             this.listOfThreads = new System.Windows.Forms.ListBox();
             this.colorButton = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.catsButton = new System.Windows.Forms.Button();
+            this.secretButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRadius)).BeginInit();
             this.SuspendLayout();
             // 
             // addThread
             // 
+            this.addThread.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addThread.Location = new System.Drawing.Point(16, 162);
             this.addThread.Name = "addThread";
             this.addThread.Size = new System.Drawing.Size(133, 23);
@@ -62,6 +65,7 @@
             // 
             // removeThread
             // 
+            this.removeThread.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeThread.Location = new System.Drawing.Point(16, 191);
             this.removeThread.Name = "removeThread";
             this.removeThread.Size = new System.Drawing.Size(133, 23);
@@ -72,7 +76,8 @@
             // 
             // suspendButton
             // 
-            this.suspendButton.Location = new System.Drawing.Point(19, 496);
+            this.suspendButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suspendButton.Location = new System.Drawing.Point(20, 521);
             this.suspendButton.Name = "suspendButton";
             this.suspendButton.Size = new System.Drawing.Size(129, 23);
             this.suspendButton.TabIndex = 2;
@@ -82,9 +87,10 @@
             // 
             // resumeButton
             // 
-            this.resumeButton.Location = new System.Drawing.Point(20, 525);
+            this.resumeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.resumeButton.Location = new System.Drawing.Point(21, 550);
             this.resumeButton.Name = "resumeButton";
-            this.resumeButton.Size = new System.Drawing.Size(130, 23);
+            this.resumeButton.Size = new System.Drawing.Size(128, 23);
             this.resumeButton.TabIndex = 3;
             this.resumeButton.Text = "Resume";
             this.resumeButton.UseVisualStyleBackColor = true;
@@ -138,7 +144,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 427);
+            this.label6.Location = new System.Drawing.Point(18, 456);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 17);
             this.label6.TabIndex = 9;
@@ -147,7 +153,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 578);
+            this.label7.Location = new System.Drawing.Point(17, 603);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(134, 17);
             this.label7.TabIndex = 10;
@@ -156,19 +162,21 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(19, 456);
+            this.comboBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.comboBox1.Location = new System.Drawing.Point(20, 476);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(130, 24);
+            this.comboBox1.Size = new System.Drawing.Size(128, 24);
             this.comboBox1.TabIndex = 11;
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(19, 604);
+            this.comboBox2.Location = new System.Drawing.Point(19, 623);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(131, 24);
+            this.comboBox2.Size = new System.Drawing.Size(130, 24);
             this.comboBox2.TabIndex = 12;
+            this.comboBox2.SelectionChangeCommitted += new System.EventHandler(this.comboBox2_SelectionChangeCommitted);
             // 
             // nudRefreshInt
             // 
@@ -207,22 +215,61 @@
             this.listOfThreads.Name = "listOfThreads";
             this.listOfThreads.Size = new System.Drawing.Size(136, 116);
             this.listOfThreads.TabIndex = 16;
+            this.listOfThreads.SelectedValueChanged += new System.EventHandler(this.listOfThreads_SelectedValueChanged);
             // 
             // colorButton
             // 
             this.colorButton.BackColor = System.Drawing.Color.Black;
+            this.colorButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.colorButton.Location = new System.Drawing.Point(16, 401);
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(134, 23);
+            this.colorButton.Size = new System.Drawing.Size(134, 27);
             this.colorButton.TabIndex = 17;
             this.colorButton.UseVisualStyleBackColor = false;
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
+            // 
+            // catsButton
+            // 
+            this.catsButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.catsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.catsButton.FlatAppearance.BorderColor = System.Drawing.Color.Brown;
+            this.catsButton.FlatAppearance.BorderSize = 4;
+            this.catsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.catsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.catsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.catsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)), true);
+            this.catsButton.ForeColor = System.Drawing.Color.Blue;
+            this.catsButton.Location = new System.Drawing.Point(837, 571);
+            this.catsButton.Name = "catsButton";
+            this.catsButton.Size = new System.Drawing.Size(180, 60);
+            this.catsButton.TabIndex = 18;
+            this.catsButton.Text = "Cat";
+            this.catsButton.UseVisualStyleBackColor = false;
+            this.catsButton.Click += new System.EventHandler(this.catsButton_Click);
+            // 
+            // secretButton
+            // 
+            this.secretButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.secretButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.secretButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.secretButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.secretButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.secretButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.secretButton.Location = new System.Drawing.Point(155, 18);
+            this.secretButton.Name = "secretButton";
+            this.secretButton.Size = new System.Drawing.Size(10, 630);
+            this.secretButton.TabIndex = 19;
+            this.secretButton.UseVisualStyleBackColor = false;
+            this.secretButton.Click += new System.EventHandler(this.secretButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1057, 659);
+            this.Controls.Add(this.secretButton);
+            this.Controls.Add(this.catsButton);
             this.Controls.Add(this.colorButton);
             this.Controls.Add(this.listOfThreads);
             this.Controls.Add(this.nudRadius);
@@ -240,10 +287,13 @@
             this.Controls.Add(this.suspendButton);
             this.Controls.Add(this.removeThread);
             this.Controls.Add(this.addThread);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Circles???";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRadius)).EndInit();
@@ -272,6 +322,8 @@
         private System.Windows.Forms.ListBox listOfThreads;
         private System.Windows.Forms.Button colorButton;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button catsButton;
+        private System.Windows.Forms.Button secretButton;
     }
 }
 
