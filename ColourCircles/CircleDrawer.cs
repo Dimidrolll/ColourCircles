@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 using System.Drawing;
 
@@ -10,72 +6,65 @@ namespace ColourCircles
 {
     class CircleDrawer
     {
-        private CircleTemlate circleTemplate;
+        private readonly CircleTemlate _circleTemplate;
 
-        public string Name => circleTemplate.color.ToString();
+        public string Name => _circleTemplate.Colour.ToString();
+
+        public ThreadPriority Priority
+        {
+            get { return _thread.Priority; }
+            set { _thread.Priority = value; }
+        }
 
 
-        private ManualResetEvent _event;
-        private Thread thread;
-        private Graphics g;
-        private bool run = true;
-        private Random _random = new Random();
-        
-        public CircleDrawer(CircleTemlate circleTemplate, int pauseInt, Graphics g) {
-            this.circleTemplate = circleTemplate;
-            this.g = g;
-            Brush brush = circleTemplate.GetBrush();
+        private readonly ManualResetEvent _event;
+        private readonly Thread _thread;
+        private bool _run = true;
+        private readonly Random _random = new Random();
+
+        public CircleDrawer(CircleTemlate circleTemplate, int pauseInt, Graphics graphics)
+        {
+            _circleTemplate = circleTemplate;
             _event = new ManualResetEvent(true);
-            thread = new Thread(()=> {
-                while (run)
+            _thread = new Thread(() =>
+            {
+                while (_run)
                 {
-                    DrawRandCircle(brush, circleTemplate.radius);
+                    for (int i = 0; i < 50; i++)
+                    {
+                        circleTemplate.Draw(_random.Next(130, 800), _random.Next(0, 530), graphics);
+                    }
+
                     Thread.Sleep(pauseInt);
                     _event.WaitOne();
                 }
-
             });
         }
 
-        public void DrawRandCircle(Brush p, int radius)
-        {
-
-            for (int i = 0; i < 50; i++)
-            {
-                g.FillEllipse(p, _random.Next(130, 800), _random.Next(0, 530), radius, radius);
-            }
-        }
         public void Start()
         {
-            thread.Start();
+            _thread.Start();
         }
+
         public void Stop()
         {
             _event.Reset();
         }
+
         public void Resume()
         {
             _event.Set();
         }
+
         public void End()
         {
             Resume();
-            run = false;
-        }
-        public void waitEnd()
-        {
-            thread.Join();
-            
+            _run = false;
         }
 
-        public void SetPriority(ThreadPriority priority)
+        public void WaitEnd()
         {
-            thread.Priority = priority;
-        }
-
-        public ThreadPriority GetPriorty()
-        {
-            return thread.Priority; 
+            _thread.Join();
         }
     }
 }

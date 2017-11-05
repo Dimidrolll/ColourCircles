@@ -161,6 +161,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboBox1.Location = new System.Drawing.Point(20, 476);
@@ -171,6 +172,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(19, 623);
             this.comboBox2.Name = "comboBox2";
@@ -257,7 +259,7 @@
             this.secretButton.ForeColor = System.Drawing.SystemColors.Control;
             this.secretButton.Location = new System.Drawing.Point(155, 18);
             this.secretButton.Name = "secretButton";
-            this.secretButton.Size = new System.Drawing.Size(10, 630);
+            this.secretButton.Size = new System.Drawing.Size(14, 630);
             this.secretButton.TabIndex = 19;
             this.secretButton.UseVisualStyleBackColor = false;
             this.secretButton.Click += new System.EventHandler(this.secretButton_Click);
@@ -291,7 +293,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Circles???";
+            this.Text = "Circles??? 2017";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);

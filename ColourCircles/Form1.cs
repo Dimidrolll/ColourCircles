@@ -9,46 +9,39 @@ namespace ColourCircles
 {
     public partial class Form1 : Form
     {
-        Thread windowThread = Thread.CurrentThread;
-        
-        BindingList<CircleDrawer> drawers = new BindingList<CircleDrawer>();
-         
+        readonly BindingList<CircleDrawer> _drawers = new BindingList<CircleDrawer>();
+
         public Form1()
         {
             InitializeComponent();
 
-            listOfThreads.DataSource = drawers;
+            listOfThreads.DataSource = _drawers;
             listOfThreads.DisplayMember = "Name";
-            comboBox1.Items.Add(ThreadPriority.Lowest);
-            comboBox1.Items.Add(ThreadPriority.BelowNormal);
-            comboBox1.Items.Add(ThreadPriority.Normal);
-            comboBox1.Items.Add(ThreadPriority.AboveNormal);
-            comboBox1.Items.Add(ThreadPriority.Highest);
+
+            object[] threadPriorities = {
+                ThreadPriority.Lowest, ThreadPriority.BelowNormal, ThreadPriority.Normal, ThreadPriority.AboveNormal,
+                ThreadPriority.Highest
+            };
+            comboBox1.Items.AddRange(threadPriorities);
             comboBox1.SelectedItem = ThreadPriority.Normal;
 
-            comboBox2.Items.Add(ThreadPriority.Lowest);
-            comboBox2.Items.Add(ThreadPriority.BelowNormal);
-            comboBox2.Items.Add(ThreadPriority.Normal);
-            comboBox2.Items.Add(ThreadPriority.AboveNormal);
-            comboBox2.Items.Add(ThreadPriority.Highest);
+            comboBox2.Items.AddRange(threadPriorities);
             comboBox2.SelectedItem = ThreadPriority.Normal;
 
             catsButton.Enabled = false;
             catsButton.Visible = false;
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void addThread_Click(object sender, EventArgs e)
         {
             CircleTemlate circleTemlate = new CircleTemlate(colorDialog1.Color, (int) nudRadius.Value);
             CircleDrawer circleDrawer = new CircleDrawer(circleTemlate, (int) nudRefreshInt.Value, CreateGraphics());
-            
-            drawers.Add(circleDrawer);
+
+            _drawers.Add(circleDrawer);
             circleDrawer.Start();
         }
 
@@ -60,8 +53,8 @@ namespace ColourCircles
             {
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
                 drawer.End();
-                drawer.waitEnd();
-                drawers.Remove(drawer);
+                drawer.WaitEnd();
+                _drawers.Remove(drawer);
             }
         }
 
@@ -73,10 +66,10 @@ namespace ColourCircles
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (var drawer in drawers)
+            foreach (var drawer in _drawers)
             {
                 drawer.End();
-                drawer.waitEnd();       
+                drawer.WaitEnd();
             }
         }
 
@@ -87,7 +80,6 @@ namespace ColourCircles
             {
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
                 drawer.Stop();
-                
             }
         }
 
@@ -98,7 +90,6 @@ namespace ColourCircles
             {
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
                 drawer.Resume();
-                
             }
         }
 
@@ -109,7 +100,7 @@ namespace ColourCircles
             {
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
                 ThreadPriority priority = (ThreadPriority) comboBox1.SelectedItem;
-                drawer.SetPriority(priority);
+                drawer.Priority = priority;
             }
         }
 
@@ -119,32 +110,27 @@ namespace ColourCircles
             if (selectedDrawer != null)
             {
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
-                comboBox1.SelectedItem = drawer.GetPriorty();
+                comboBox1.SelectedItem = drawer.Priority;
             }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            drawers.Clear();//??????????????????? память бы почистить
+            _drawers.Clear();
         }
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
-            ThreadPriority priority = (ThreadPriority)comboBox2.SelectedItem;
-            windowThread.Priority = priority;
+            ThreadPriority priority = (ThreadPriority) comboBox2.SelectedItem;
+            Thread.CurrentThread.Priority = priority;
         }
-        
-
-
-
 
 
         //прикольчики
         private void catsButton_Click(object sender, EventArgs e)
         {
-            Bitmap image = new Bitmap(@"C:\Users\acer\Pictures\SlideShow\snoopy_11.jpg", true);
-            Graphics g = this.CreateGraphics();
+            Bitmap image = new Bitmap(@".\snoopy_11.jpg", true);
+            Graphics g = CreateGraphics();
             g.DrawImage(image, new Point(300, 100));
             catsButton.Enabled = false;
             catsButton.Visible = false;
@@ -152,13 +138,11 @@ namespace ColourCircles
 
         private void secretButton_Click(object sender, EventArgs e)
         {
-
-            if (catsButton.Visible = true)
+            if (!catsButton.Visible)
             {
                 catsButton.Enabled = true;
                 catsButton.Visible = true;
             }
-            
         }
     }
 }

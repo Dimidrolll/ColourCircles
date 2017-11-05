@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace ColourCircles
 {
     class CircleTemlate
     {
-        public Color color { get; }
-        public int radius { get; }
+        public Color Colour { get; }
+        private int Radius { get; }
 
-        public CircleTemlate(Color color, int radius) {
-            this.color = color;
-            this.radius = radius;
-        }
+        private readonly Brush _brush;
 
-        public Brush GetBrush()
+        public CircleTemlate(Color colour, int radius)
         {
-            return new SolidBrush(color);
+            Colour = colour;
+            Radius = radius;
+            _brush = new SolidBrush(colour);
         }
+
+        public void Draw(int x, int y, Graphics graphics)
+        {
+            graphics.FillEllipse(_brush, x, y, Radius, Radius);
+        }
+
     }
 }
