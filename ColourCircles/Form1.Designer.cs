@@ -191,6 +191,7 @@
             this.nudRefreshInt.Name = "nudRefreshInt";
             this.nudRefreshInt.Size = new System.Drawing.Size(130, 22);
             this.nudRefreshInt.TabIndex = 14;
+            this.nudRefreshInt.ValueChanged += new System.EventHandler(this.nudRefreshInt_ValueChanged);
             // 
             // nudRadius
             // 
@@ -208,6 +209,7 @@
             0,
             0,
             0});
+            this.nudRadius.ValueChanged += new System.EventHandler(this.nudRadius_ValueChanged);
             // 
             // listOfThreads
             // 
@@ -228,6 +230,7 @@
             this.colorButton.Size = new System.Drawing.Size(134, 27);
             this.colorButton.TabIndex = 17;
             this.colorButton.UseVisualStyleBackColor = false;
+            this.colorButton.BackColorChanged += new System.EventHandler(this.colorButton_BackColorChanged);
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // catsButton

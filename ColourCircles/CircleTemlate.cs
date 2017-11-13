@@ -4,10 +4,10 @@ namespace ColourCircles
 {
     class CircleTemlate
     {
-        public Color Colour { get; }
-        private int Radius { get; }
+        public Color Colour { get; set; }
+        public int Radius { get; set; }
 
-        private readonly Brush _brush;
+        public Brush _brush;
 
         public CircleTemlate(Color colour, int radius)
         {

@@ -111,6 +111,9 @@ namespace ColourCircles
             {
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
                 comboBox1.SelectedItem = drawer.Priority;
+                nudRadius.Value = drawer.GetRadius();
+                nudRefreshInt.Value = drawer.GetRef();
+                colorButton.BackColor = drawer.GetColor();
             }
         }
 
@@ -124,6 +127,47 @@ namespace ColourCircles
             ThreadPriority priority = (ThreadPriority) comboBox2.SelectedItem;
             Thread.CurrentThread.Priority = priority;
         }
+
+        private void nudRadius_ValueChanged(object sender, EventArgs e)
+        {
+            var selectedDrawer = listOfThreads.SelectedItem;
+            if (selectedDrawer != null)
+            {
+                CircleDrawer drawer = selectedDrawer as CircleDrawer;
+                drawer.ChangeRadius((int)nudRadius.Value);
+            }
+        }
+
+        private void nudRefreshInt_ValueChanged(object sender, EventArgs e)
+        {
+            var selectedDrawer = listOfThreads.SelectedItem;
+            if (selectedDrawer != null)
+            {
+                CircleDrawer drawer = selectedDrawer as CircleDrawer;
+                drawer.ChangeRef((int)nudRefreshInt.Value);
+            }
+        }
+
+        private void colorButton_BackColorChanged(object sender, EventArgs e)
+        {
+            var selectedDrawer = listOfThreads.SelectedItem;
+            if (selectedDrawer != null)
+            {
+                CircleDrawer drawer = selectedDrawer as CircleDrawer;
+                Color color = colorButton.BackColor;
+                drawer.ChangeColor(color);
+                drawer.Name = drawer._circleTemplate.Colour.ToString();
+                listOfThreads.DataSource = _drawers;
+                listOfThreads.DisplayMember = "Name";
+
+            }
+        }
+
+
+
+
+
+
 
 
         //прикольчики
@@ -144,5 +188,7 @@ namespace ColourCircles
                 catsButton.Visible = true;
             }
         }
+
+       
     }
 }

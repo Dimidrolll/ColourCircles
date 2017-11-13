@@ -6,11 +6,17 @@ namespace ColourCircles
 {
     class CircleDrawer
     {
-        private readonly CircleTemlate _circleTemplate;
+        public CircleTemlate _circleTemplate;
 
-        public string Name => _circleTemplate.Colour.ToString();
+        public string Name {
+            set { _thread.Name = value; }
+            get
+            {
+                return _circleTemplate.Colour.ToString();
+            }
+        }
 
-        public ThreadPriority Priority
+    public ThreadPriority Priority
         {
             get { return _thread.Priority; }
             set { _thread.Priority = value; }
@@ -21,10 +27,12 @@ namespace ColourCircles
         private readonly Thread _thread;
         private bool _run = true;
         private readonly Random _random = new Random();
+        private int _pauseInt;
 
         public CircleDrawer(CircleTemlate circleTemplate, int pauseInt, Graphics graphics)
         {
             _circleTemplate = circleTemplate;
+            _pauseInt = pauseInt;
             _event = new ManualResetEvent(true);
             _thread = new Thread(() =>
             {
@@ -32,14 +40,48 @@ namespace ColourCircles
                 {
                     for (int i = 0; i < 50; i++)
                     {
-                        circleTemplate.Draw(_random.Next(130, 800), _random.Next(0, 530), graphics);
+                        _circleTemplate.Draw(_random.Next(130, 800), _random.Next(0, 530), graphics);
                     }
 
-                    Thread.Sleep(pauseInt);
+                    Thread.Sleep(_pauseInt);
                     _event.WaitOne();
                 }
             });
         }
+
+        public void ChangeRadius(int radius)
+        {
+            _circleTemplate.Radius = radius;
+        }
+        public int GetRadius()
+        {
+            return _circleTemplate.Radius; 
+        }
+
+        public void ChangeRef(int pause)
+        {
+            _pauseInt = pause;
+        }
+        public int GetRef()
+        {
+            return _pauseInt;
+        }
+
+        public void ChangeColor(Color color)
+        {
+            //Name = _circleTemplate.Colour.ToString();
+            _circleTemplate._brush.Dispose();
+            _circleTemplate.Colour = color;
+            _circleTemplate._brush = new SolidBrush(color);
+
+        }
+        public Color GetColor()
+        {
+            return _circleTemplate.Colour;
+        }
+
+
+
 
         public void Start()
         {
