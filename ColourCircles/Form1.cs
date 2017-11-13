@@ -156,9 +156,8 @@ namespace ColourCircles
                 CircleDrawer drawer = selectedDrawer as CircleDrawer;
                 Color color = colorButton.BackColor;
                 drawer.ChangeColor(color);
-                drawer.Name = drawer._circleTemplate.Colour.ToString();
-                listOfThreads.DataSource = _drawers;
-                listOfThreads.DisplayMember = "Name";
+                //drawer.Name = drawer._circleTemplate.Colour.ToString();
+
 
             }
         }
