@@ -300,6 +300,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.Form1_Click);
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshInt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRadius)).EndInit();
             this.ResumeLayout(false);

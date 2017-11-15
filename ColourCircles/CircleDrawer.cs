@@ -2,15 +2,17 @@
 using System.Threading;
 using System.Drawing;
 
+using ColourCircles;
 
 namespace ColourCircles
 {
-
+    
     class CircleDrawer
     {
-        public CircleTemlate _circleTemplate;
-        
-        public string Name => "Thread))0)0)";
+        public CircleTemlate CircleTemplate;
+
+
+        public string Name => "Thread)";
 
         public ThreadPriority Priority
         {
@@ -27,7 +29,7 @@ namespace ColourCircles
 
         public CircleDrawer(CircleTemlate circleTemplate, int pauseInt, Graphics graphics)
         {
-            _circleTemplate = circleTemplate;
+            CircleTemplate = circleTemplate;
             _pauseInt = pauseInt;
             _event = new ManualResetEvent(true);
             _thread = new Thread(() =>
@@ -36,7 +38,7 @@ namespace ColourCircles
                 {
                     for (int i = 0; i < 50; i++)
                     {
-                        _circleTemplate.Draw(_random.Next(130, 800), _random.Next(0, 530), graphics);
+                        CircleTemplate.Draw(_random.Next(130, 800), _random.Next(0, 530), graphics);
                     }
 
                     Thread.Sleep(_pauseInt);
@@ -47,11 +49,11 @@ namespace ColourCircles
 
         public void ChangeRadius(int radius)
         {
-            _circleTemplate.Radius = radius;
+            CircleTemplate.Radius = radius;
         }
         public int GetRadius()
         {
-            return _circleTemplate.Radius; 
+            return CircleTemplate.Radius; 
         }
 
         public void ChangeRef(int pause)
@@ -65,15 +67,13 @@ namespace ColourCircles
 
         public void ChangeColor(Color color)
         {
-            //Name = _circleTemplate.Colour.ToString();
-            _circleTemplate._brush.Dispose();
-            _circleTemplate.Colour = color;
-            _circleTemplate._brush = new SolidBrush(color);
-
+            CircleTemplate._brush.Dispose();
+            CircleTemplate.Colour = color;
+            CircleTemplate._brush = new SolidBrush(color);
         }
         public Color GetColor()
         {
-            return _circleTemplate.Colour;
+            return CircleTemplate.Colour;
         }
 
 

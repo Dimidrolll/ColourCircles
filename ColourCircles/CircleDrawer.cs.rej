@@ -1,0 +1,28 @@
+diff a/ColourCircles/CircleDrawer.cs b/ColourCircles/CircleDrawer.cs	(rejected hunks)
+@@ -2,21 +2,17 @@
+ using System.Threading;
+ using System.Drawing;
+ 
++
+ namespace ColourCircles
+ {
++
+     class CircleDrawer
+     {
+         public CircleTemlate _circleTemplate;
++        
++        public string Name => "Thread))0)0)";
+ 
+-        public string Name {
+-            set { _thread.Name = value; }
+-            get
+-            {
+-                return _circleTemplate.Colour.ToString();
+-            }
+-        }
+-
+-    public ThreadPriority Priority
++        public ThreadPriority Priority
+         {
+             get { return _thread.Priority; }
+             set { _thread.Priority = value; }

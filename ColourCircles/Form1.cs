@@ -41,10 +41,14 @@ namespace ColourCircles
             CircleTemlate circleTemlate = new CircleTemlate(colorDialog1.Color, (int) nudRadius.Value);
             CircleDrawer circleDrawer = new CircleDrawer(circleTemlate, (int) nudRefreshInt.Value, CreateGraphics());
 
-            _drawers.Add(circleDrawer);
+            _drawers.Add(circleDrawer);           
             circleDrawer.Start();
         }
 
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            listOfThreads.ClearSelected();
+        }
 
         private void removeThread_Click(object sender, EventArgs e)
         {
@@ -188,6 +192,6 @@ namespace ColourCircles
             }
         }
 
-       
+        
     }
 }
